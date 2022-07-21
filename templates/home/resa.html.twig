@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Voiture{% endblock %}
+
+{% block body %}
+
+ <div class="container">
+        <div class="row">
+            {% for voiture in voitures %}
+            <div class="col-3">
+             <div class="col-6">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('photos/'~ voiture.photo) }}" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ voiture.titre }}</h5>
+                        <p class="card-text">{{ voiture.prixJournalier * total_jour}} €</p>
+                        <p class="card-text">{{ voiture.description }}</p>
+                        <a class= "btn btn-primary" href="{{ path('app_new_reservation', { 'id' : voiture.id , 'prixtotal' :voiture.prixJournalier * total_jour, 'depart' : date_depart.format('Y-m-d'),'retour' : date_retour.format('Y-m-d') }) }}">Reservation</a>
+                    </div>
+                </div>
+            </div>
+             </div>
+
+            {% endfor %}
+              </div>
+            </div>
+ 
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}accueil
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<h1>ici le formulaire</h1>
+		{{ form_start(form) }}
+		<div class="d-flex ">
+			<div>
+				{{ form_row(form.date_depart) }}
+			</div>
+			<div class="float-end">
+				{{form_row(form.date_retour)}}
+			</div>
+		</div>
+		<input type="submit" value="recherche" class="btn btn-success">
+		{{ form_end(form) }}
+	</div>
+</div></div><div class="container">
+<div class="row">
+	{% for voiture in voitures %}
+		<div class="col-3">
+			<div class="card" style="width: 18rem;">
+				<img src="{{ asset('photos/'~ voiture.photo) }}" class="card-img-top" alt="..."/>
+				<div class="card-body">
+					<h5 class="card-title">{{ voiture.titre }}</h5>
+					<p class="card-text">{{ voiture.marque }}</p>
+					<p class="card-text">{{ voiture.description }}</p>
+					<p class="card-text">{{ voiture.modele }}</p>
+					<p class="card-text">{{ voiture.prixJournalier}} €</p>
+					<p class="card-text">{{ voiture.description }}</p>
+				</div>
+			</div>
+		</div>
+
+	{% endfor %}
+
+</div>{% endblock %}

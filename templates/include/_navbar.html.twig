@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
+		<a class="navbar-brand" href="#"><img src="{{ asset('assets/img/iconcal.png')}}" alt="" style="width: 30px"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Home</a>
+				</li>
+				{% if app.user %}
+
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">logout</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{{ path('app_profil') }}">Profil</a>
+					</li>
+
+					
+					            {% if is_granted('ROLE_ADMIN') %}
+						              <li class="nav-item">
+						                	<a class="nav-link active" aria-current="page" href="{{ path('app_voiture_index') }}">Voitures</a>
+						              </li>
+									  <li class="nav-item">
+											<a class="nav-link active" aria-current="page" href="{{ path('app_reservation_index') }}">Resa</a>
+                        			  </li>
+					            {% endif %}
+
+
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">login</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">register</a>
+						</li>
+
+					{% endif %}
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
